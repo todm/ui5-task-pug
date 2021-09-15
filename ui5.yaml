@@ -1,0 +1,15 @@
+specVersion: "2.3"
+kind: extension
+type: task
+metadata:
+  name: ui5-task-pug
+task:
+  path: lib/pug/task.js
+---
+specVersion: "2.3"
+kind: extension
+type: server-middleware
+metadata:
+  name: ui5-middleware-pug
+middleware:
+  path: lib/pug/middleware.js

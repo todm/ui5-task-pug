@@ -1,0 +1,18 @@
+{
+  "name": "ui5-task-pug",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "ui5 build --config ./test/ui5-test.yaml --dest ./test/dist --clean-dest",
+    "test:serve": "ui5 serve --config ./test/ui5-test.yaml"
+  },
+  "dependencies": {
+    "@ui5/logger": "^2.0.1",
+    "micromatch": "^4.0.4",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "@ui5/cli": "^2.10.3"
+  }
+}
