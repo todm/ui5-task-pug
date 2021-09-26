@@ -6,7 +6,7 @@ Task (and **Middleware**) for transpiling [pug](https://pugjs.org) files into xm
 
 Add the task to your project as a dev dependency.
 ```sh
-npm i -D git+https://github.com/todm/ui5-task-pug.git
+npm i -D @todms/ui5-task-pug
 ```
 
 Add the package to the ui5 dependencies of `package.json`
@@ -14,7 +14,7 @@ Add the package to the ui5 dependencies of `package.json`
 "ui5": {
   "dependencies": [
     #...
-    "ui5-task-pug"
+    "@todms/ui5-task-pug"
   ]
 }
 ```

@@ -1,11 +1,11 @@
 {
-  "name": "ui5-task-pug",
+  "name": "@todms/ui5-task-pug",
   "version": "1.0.0",
+  "description": "Task and middleware for transpiling pug files into xml",
   "main": "index.js",
-  "license": "MIT",
-  "scripts": {
-    "test": "ui5 build --config ./test/ui5-test.yaml --dest ./test/dist --clean-dest",
-    "test:serve": "ui5 serve --config ./test/ui5-test.yaml"
+  "directories": {
+    "lib": "lib",
+    "test": "test"
   },
   "dependencies": {
     "@ui5/logger": "^2.0.1",
@@ -14,5 +14,29 @@
   },
   "devDependencies": {
     "@ui5/cli": "^2.10.3"
-  }
+  },
+  "scripts": {
+    "test": "ui5 build --config ./test/ui5-test.yaml --dest ./test/dist --clean-dest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/todm/ui5-task-pug.git"
+  },
+  "keywords": [
+    "ui5",
+    "task",
+    "middleware",
+    "pug",
+    "xml",
+    "view"
+  ],
+  "author": "todm",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/todm/ui5-task-pug/issues"
+  },
+  "homepage": "https://github.com/todm/ui5-task-pug#readme",
+  "files": [
+    "lib"
+  ]
 }
