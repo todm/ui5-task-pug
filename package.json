@@ -1,6 +1,6 @@
 {
   "name": "@todms/ui5-task-pug",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Task and middleware for transpiling pug files into xml",
   "main": "index.js",
   "directories": {
