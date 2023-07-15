@@ -84,7 +84,7 @@ declare module '@ui5/builder' {
         /**
          * Custom task configuration, as defined in the project's ui5.yaml
          */
-        configuration: T;
+        configuration: Partial<T>;
 
         /**
          * Name of the custom task.

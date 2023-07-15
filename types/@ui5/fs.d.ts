@@ -335,7 +335,7 @@ declare module '@ui5/fs' {
          * @param params Parameters. same parameters as the [ReaderCollection]{@link @ui5/fs/ReaderCollection} constructor
          * @returns Reader collection wrapping provided readers
          */
-        export type createReaderCollection = (params: ConstructorParameters<ReaderCollection>) => ReaderCollection;
+        export type createReaderCollection = (...params: ConstructorParameters<typeof ReaderCollection>) => ReaderCollection;
 
         /**
          * Creates a ReaderCollectionPrioritized
@@ -343,7 +343,7 @@ declare module '@ui5/fs' {
          * @returns Reader collection wrapping provided readers
          */
         export type createReaderCollectionPrioritized = (
-            params: ConstructorParameters<ReaderCollectionPrioritized>
+            ...params: ConstructorParameters<typeof ReaderCollectionPrioritized>
         ) => ReaderCollectionPrioritized;
 
         /**
@@ -351,7 +351,7 @@ declare module '@ui5/fs' {
          * @param params Parameters to be passed to the constructor. same parameters as the [Resource]{@link @ui5/fs/Resource} constructor
          * @returns Resource
          */
-        export type createResource = (params: ConstructorParameters<Resource>) => Resource;
+        export type createResource = (...params: ConstructorParameters<typeof Resource>) => Resource;
 
         /**
          * Create a [Filter-Reader]{@link @ui5/fs/readers/Filter} with the given reader.
@@ -360,7 +360,7 @@ declare module '@ui5/fs' {
          * @param params Parameters to be passed to the constructor. same parameters as the [Filter]{@link @ui5/fs/Filter} constructor
          * @returns Reader instance
          */
-        export type createFilterReader = (params: ConstructorParameters<readers.Filter>) => readers.Filter;
+        export type createFilterReader = (...params: ConstructorParameters<typeof readers.Filter>) => readers.Filter;
 
         /**
          * Create a [Link-Reader]{@link @ui5/fs/readers/Filter} with the given reader.
@@ -383,7 +383,7 @@ declare module '@ui5/fs' {
          * @param params Parameters to be passed to the constructor. same parameters as the [Link]{@link @ui5/fs/Link} constructor
          * @returns Reader instance
          */
-        export type createLinkReader = (params: ConstructorParameters<readers.Link>) => readers.Link;
+        export type createLinkReader = (...params: ConstructorParameters<typeof readers.Link>) => readers.Link;
 
         /**
          * Create a [Link-Reader]{@link @ui5/fs/readers/Link} where all requests are prefixed with `/resources/<namespace>`.
@@ -392,7 +392,7 @@ declare module '@ui5/fs' {
          * @param params Parameters to be passed to the constructor. same parameters as the [Link]{@link @ui5/fs/Link} constructor
          * @returns Reader instance
          */
-        export type createFlatReader = (params: ConstructorParameters<readers.Link>) => readers.Link;
+        export type createFlatReader = (...params: ConstructorParameters<typeof readers.Link>) => readers.Link;
 
         export type prefixGlobPattern = () => unknown;
         export type createWorkspace = () => unknown;

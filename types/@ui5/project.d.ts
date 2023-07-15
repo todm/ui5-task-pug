@@ -1,8 +1,24 @@
 declare module '@ui5/project' {}
 
 declare module '@ui5/project/lib/build/helpers' {
-    import { Resource, resourceFactory } from '@ui5/fs';
+    import { ReaderCollection, Resource, resourceFactory } from '@ui5/fs';
     export {};
+
+    export interface ProjectInterface {
+        getType();
+        getName();
+        getVersion();
+        getNamespace(): string | null;
+        getRootReader();
+        getReader(): ReaderCollection;
+        getRootPath();
+        getSourcePath(): string;
+        getCustomConfiguration(): object;
+        isFrameworkProject(): boolean;
+        getFrameworkName(): string;
+        getFrameworkVersion(): string;
+        getFrameworkDependencies(): { name: string; development: boolean; optional: boolean }[];
+    }
 
     export class TaskUtil {
         /**
@@ -89,28 +105,28 @@ declare module '@ui5/project/lib/build/helpers' {
          *  Register a function that must be executed once the build is finished. This can be used to, for example,
          * clean up files temporarily created on the file system. If the callback returns a Promise, it will be waited for.
          * It will also be executed in cases where the build has failed or has been aborted.
-         * 
+         *
          * This method is only available to custom task extensions defining **Specification Version 2.2 and above**
-         * 
+         *
          * @param callback Callback to register. If it returns a Promise, it will be waited for
          */
         registerCleanupTask(callback: () => Promise<void> | void): void;
 
         /**
          * Retrieve a single project from the dependency graph
-         * 
+         *
          * This method is only available to custom task extensions defining **Specification Version 3.0 and above**
-         * 
+         *
          * @param projectNameOrResource Name of the project to retrieve or a Resource instance to retrieve the associated project for. Defaults to the name of the project currently being built
          * @returns Specification Version-dependent interface to the Project instance or `undefined` if the project name is unknown or the provided resource is not associated with any project.
          */
-        getProject(projectNameOrResource?: string | Resource): unknown;
+        getProject(projectNameOrResource?: string | Resource): ProjectInterface;
 
         /**
          * Retrieve a list of direct dependencies of a given project from the dependency graph. Note that this list does not include transitive dependencies.
-         * 
+         *
          * This method is only available to custom task extensions defining **Specification Version 3.0 and above**
-         * 
+         *
          * @param projectName Name of the project to retrieve. Defaults to the project currently being built
          * @returns Names of all direct dependencies
          */
@@ -118,7 +134,7 @@ declare module '@ui5/project/lib/build/helpers' {
 
         /**
          * Provides limited access to [@ui5/fs/resourceFactory]{@link @ui5/fs/resourceFactory} functions
-         * 
+         *
          * **This method is only available to custom task extensions defining **Specification Version 3.0 and above**
          */
         resourceFactory: {

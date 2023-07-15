@@ -1,5 +1,6 @@
 declare module '@ui5/server' {
     import { AbstractReader, Resource, resourceFactory } from '@ui5/fs';
+    import { ProjectInterface } from '@ui5/project/lib/build/helpers';
     import { Logger } from '@ui5/logger';
     import { Request, RequestHandler } from 'express';
 
@@ -62,7 +63,7 @@ declare module '@ui5/server' {
          * **Specification Version 3.0 and above**.
          * @param projectNameOrResource Name of the project to retrieve or a Resource instance to retrieve the associated project for. Defaults to the name of the current root project
          */
-        getProject(projectNameOrResource?: string | Resource): unknown;
+        getProject(projectNameOrResource?: string | Resource): ProjectInterface;
 
         /**
          * Provides limited access to [@ui5/fs/resourceFactory]{@link @ui5/fs/resourceFactory} functions
@@ -98,7 +99,7 @@ declare module '@ui5/server' {
             /**
              * Custom middleware configuration, as defined in the project's ui5.yaml
              */
-            configuration: T;
+            configuration: Partial<T>;
 
             /**
              * Name of the custom middleware. This parameter is only provided to custom middleware extensions defining Specification Version 3.0 and later
