@@ -32,12 +32,12 @@ const taskFunction: TaskFunction<TaskConfig> = async ({ options, taskUtil, works
             const transformed = transformer.transform(contents, resource.getPath());
 
             const file = taskUtil.resourceFactory.createResource({ path: resource.getPath(), string: transformed });
-            if (config.forceExtension) {
-                const [path] = splitPathExtension(resource.getPath());
+            const [path, ext] = splitPathExtension(resource.getPath());
+            if (config.forceExtension && ext !== config.forceExtension) {
                 file.setPath(path + '.' + config.forceExtension);
+                taskUtil.setTag(resource, taskUtil.STANDARD_TAGS.OmitFromBuildResult);
             }
             await workspace.write(file);
-            taskUtil.setTag(resource, taskUtil.STANDARD_TAGS.OmitFromBuildResult);
         })
     );
 };
