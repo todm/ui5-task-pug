@@ -1,7 +1,6 @@
 import { MiddlewareFunction } from '@ui5/server';
 import { BaseConfig, splitPathExtension } from './utils';
 import micromatch from 'micromatch';
-import { AbstractReaderWriter } from '@ui5/fs';
 import PugTransformer from './transformer';
 
 interface MiddlewareConfig extends BaseConfig {
@@ -29,8 +28,6 @@ const middlewareFunction: MiddlewareFunction = ({ options, middlewareUtil, resou
         callback: r => micromatch.isMatch(r.getPath(), config.searchInclude, { ignore: config.searchExclude })
     });
 
-    const writer = (<any>middlewareUtil.getProject().getReader())._readers.find((w: any) => !!w.write) as AbstractReaderWriter;
-
     return async (req, res, next) => {
         try {
             const path = middlewareUtil.getPathname(req);
@@ -45,16 +42,9 @@ const middlewareFunction: MiddlewareFunction = ({ options, middlewareUtil, resou
             const contents = await resource.getString();
             const transformed = transformer.transform(contents, resource.getPath());
 
-            const file = middlewareUtil.resourceFactory.createResource({
-                path,
-                string: transformed,
-                statInfo: resource.getStatInfo()
-            });
-            await writer.write(file);
-
-            next();
+            res.end(transformed);
         } catch (ex: any) {
-            log.error(ex.message || "unknown error");
+            log.error(ex.message || 'unknown error');
             switch (config.onError) {
                 case 'next':
                     return next();

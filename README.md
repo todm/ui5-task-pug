@@ -6,10 +6,8 @@ Task (and **Middleware**) for transpiling [pug](https://pugjs.org) files into xm
 >
 > -   Support for specVersion 3
 > -   Support for includes and inheritance
-> -   Middleware now allways passes results to next middleware
 > -   Configuration changes
 >     -   `pugOptions` renamed to `pugVariables`
->     -   removed `passFile`
 >     -   added `pretty` option for formatted outputs
 >     -   added `searchExclude` to middleware
 
@@ -49,9 +47,9 @@ You can configure the behaviour by providing the configuration object in ui5.yam
 | exclude | `string \| string[]` | `[]` | Files that should be excluded |
 | pugVariables | `object` | `{}` | Variables that will be passed to the pug template |
 | pretty | `boolean` | `false` | Adds whitespace to the resulting HTML to make it easier for a human to read |
-| forceExtension | `string \| false` | `xml` | Force a specific file extension for transformed files |
+| forceExtension | `string \| false` | `'xml'` | Force a specific file extension for transformed files |
 
-**Middleware Configuration **
+**Middleware Configuration**
 | Name | Type | Default | Description |
 | ------- | ------------------- | -------------- | ----------- |
 | include | `string \| string[]` | `['**/*.xml']` | Files that should be included |
