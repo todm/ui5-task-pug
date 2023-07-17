@@ -1,7 +1,7 @@
-specVersion: '2.3'
-metadata:
-  name: ui5-task-babel
+specVersion: "3.0"
 type: application
+metadata:
+  name: my.app
 resources:
   configuration:
     paths:
@@ -11,15 +11,15 @@ builder:
     - name: ui5-task-pug
       beforeTask: generateComponentPreload
       configuration:
-        pugOptions:
-          myVar: Hello World
+        pretty: true
 server:
   customMiddleware:
     - name: ui5-middleware-pug
       beforeMiddleware: serveResources
-
+      configuration:
+        pretty: true
 ---
-specVersion: "2.3"
+specVersion: "3.0"
 kind: extension
 type: task
 metadata:
@@ -27,7 +27,7 @@ metadata:
 task:
   path: dist/task.js
 ---
-specVersion: "2.3"
+specVersion: "3.0"
 kind: extension
 type: server-middleware
 metadata:

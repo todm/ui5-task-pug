@@ -1,4 +1,4 @@
-specVersion: "2.3"
+specVersion: "3.0"
 kind: extension
 type: task
 metadata:
@@ -6,7 +6,7 @@ metadata:
 task:
   path: dist/task.js
 ---
-specVersion: "2.3"
+specVersion: "3.0"
 kind: extension
 type: server-middleware
 metadata:
