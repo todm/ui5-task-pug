@@ -41,6 +41,35 @@ declare module '@ui5/fs' {
          * @returns Promise resolving to a single resource
          */
         byPath(virPath: string, options?: { nodir?: boolean }): Promise<Resource>;
+
+        /**
+         * Locates resources by one or more glob patterns.
+         * 
+         * @param virPattern glob pattern as string or an array of glob patterns for virtual directory structure
+         * @param options glob options
+         * @param trace Trace instance
+         * @returns Promise resolving to list of resources
+         */
+        protected abstract _byGlob(virPattern: string | string[], options: any, trace: any): Promise<Resource[]>;
+    
+        /**
+         * Locate resources by matching a single glob pattern.
+         * 
+         * @param pattern glob pattern
+         * @param options glob options
+         * @param trace Trace instance
+         * @returns Promise resolving to list of resources
+         */
+        protected abstract _runGlob(pattern: string, options: any, trace: any): Promise<Resource[]>;
+    
+        /**
+         * Locates resources by path.
+         * @param virPath Virtual path
+         * @param option Options
+         * @param trace Trace instance
+         * @returns Promise resolving to a single resource
+         */
+        protected abstract _runPath(virPath: string, option: any, trace: any): Promise<Resource>;
     }
 
     /**
@@ -76,6 +105,15 @@ declare module '@ui5/fs' {
          * @returns Promise resolving once data has been written
          */
         write(resource: Resource, options?: { drain?: boolean; readonly?: boolean }): Promise<void>;
+    
+        /**
+         * Writes the content of a resource to a path.
+         * 
+         * @param resource Resource to write
+         * @param options Write options, see above
+         * @returns  Promise resolving once data has been written
+         */
+        protected abstract _write(resource: Resource, options?: any): Promise<void>;
     }
 
     /**
